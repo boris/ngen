@@ -1,4 +1,4 @@
-.PHONY: install test
+.PHONY: install test clean
 
 default: test
 
@@ -7,3 +7,6 @@ install:
 
 test:
 	PYTHONPATH=./src pytest
+
+clean:
+	pip uninstall ngen
