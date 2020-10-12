@@ -1,10 +1,21 @@
-from argparse import Action, ArgumentParser
+import click
+import subprocess
 
-db = "example.kdbx"
+cmd = "keepassxc-cli"
+db = "/path/to/worth.kdbx"
 
-def create_ngen():
-    ngen = ArgumentParser()
-    ngen.add_argument('db', help="DB where the secrets are stored.")
-    ngen.add_argument('--list', '-l', help="List secrets stored in the DB.")
-    ngen.add_argument('--copy', '-c', help="Copy secret to clipboard")
-    return ngen
+@click.group()
+def main():
+    return True
+
+@main.command()
+@click.option('--secret', default='/')
+@click.option('--db', '-d', default=db)
+def list(secret, db):
+    subprocess.run([cmd, 'ls', db, secret])
+
+@main.command()
+@click.option('--copy', default='')
+@click.option('--key', default='')
+def copy(copy, key):
+    subprocess.run([cmd, 'clip', db, key])
