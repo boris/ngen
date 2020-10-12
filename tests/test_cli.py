@@ -1,5 +1,6 @@
 from click.testing import CliRunner
 import pytest
+import subprocess
 from ngen import cli
 
 @pytest.fixture(scope="module")
@@ -19,3 +20,11 @@ def test_ngen_with_known_db(runner):
     """
     result = runner.invoke(cli.main, ['list', '-d' , '~/.keepassxc/worth.kdbx'])
     assert result.exit_code == 0
+
+def test_check_keepassxc_exists(runner):
+    """
+    Will fail if keepassxc-cli is not installed
+    """
+    process = subprocess.Popen(['keepassxc-cli', '-v'], stdout=subprocess.PIPE)
+    out, _ = process.communicate()
+    assert process.returncode == 0
