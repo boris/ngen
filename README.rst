@@ -30,7 +30,8 @@ Dev list
 
 1. Ensure dependencies are installed.
 2. Read keepass-xc DB from config.
-3. Include wheel installer
+3. Include wheel installer.
+4. Read DB definition from config file.
 
 
 .. _Mapudungún: https://en.wikipedia.org/wiki/Ngen
