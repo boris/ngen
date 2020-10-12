@@ -1,28 +1,30 @@
+from click.testing import CliRunner
 import pytest
+import subprocess
 from ngen import cli
 
-cmd = 'keepassxc-cli'
-db = 'example.kdbx'
+@pytest.fixture(scope="module")
+def runner():
+    return CliRunner()
 
-@pytest.fixture
-def ngen():
-    return cli.create_ngen()
-
-def test_ngen_with_unknown_db(ngen):
+def test_ngen_with_unknown_db(runner):
     """
     Will fail if the DB is unknown
     """
-    with pytest.raises(SystemExit) as e:
-        ngen.parse_args([cmd, 'ls', 'null_db'])
-    assert e.type == SystemExit
-    assert e.value.code == 2
+    result = runner.invoke(cli.main, ['list', 'fake.'])
+    assert result.exit_code == 2
 
-def test_ngen_with_known_db(ngen):
+def test_ngen_with_known_db(runner):
     """
     Will not fail if the DB is known
     """
-    with pytest.raises(SystemExit) as e:
-        ngen.parse_args([cmd, 'lsss', db])
-    assert e.type == SystemExit
-    assert e.value.code == 2
+    result = runner.invoke(cli.main, ['list', '-d' , '~/.keepassxc/worth.kdbx'])
+    assert result.exit_code == 0
 
+def test_check_keepassxc_exists(runner):
+    """
+    Will fail if keepassxc-cli is not installed
+    """
+    process = subprocess.Popen(['keepassxc-cli', '-v'], stdout=subprocess.PIPE)
+    out, _ = process.communicate()
+    assert process.returncode == 0
