@@ -1,4 +1,4 @@
-.PHONY: install test clean
+.PHONY: install test clean build
 
 default: test
 
@@ -10,3 +10,6 @@ test:
 
 clean:
 	pip uninstall ngen
+
+build:
+	python setup.py bwheel_dist
