@@ -6,7 +6,7 @@ CLI for interacting with keepass-xc. The word **ngen** means *owner* in
 
 Setup
 -----
-Copy `config-example.yml` to `config.yml`. Modify the `db` line to point to your
+Copy ``config-example.yml`` to ``config.yml``. Modify the ``db`` line to point to your
 file.
 
 .. code-block:: yaml
