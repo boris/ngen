@@ -9,7 +9,7 @@ Setup
 Copy `config-example.yml` to `config.yml`. Modify the `db` line to point to your
 file.
 
-.. highlight:: yaml
+.. code-block:: yaml
 
     db: '/path/to/file.kdbx'
 
