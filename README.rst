@@ -4,6 +4,15 @@ Ngen
 CLI for interacting with keepass-xc. The word **ngen** means *owner* in
 `Mapudungún`_.
 
+Setup
+-----
+Copy `config-example.yml` to `config.yml`. Modify the `db` line to point to your
+file.
+
+.. highlight:: yaml
+
+    db: '/path/to/file.kdbx'
+
 How does it work
 ----------------
 
