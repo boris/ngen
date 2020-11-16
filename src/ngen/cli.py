@@ -1,8 +1,11 @@
 import click
 import subprocess
+import yaml
 
+cfg = open('config.yml', 'r')
+cfg_yaml = yaml.load(cfg, Loader=yaml.FullLoader)
 cmd = "keepassxc-cli"
-db = "/path/to/worth.kdbx"
+db = cfg_yaml['db']
 
 @click.group()
 def main():
