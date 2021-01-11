@@ -48,6 +48,7 @@ The above will do the following:
 5. Search for a term
 
 Search feature:
+
 - Is not case sensitive. Searching for 'Secret' will return the same as searching
   for 'secret'
 - Includes substrings. Searching for 'Secre' will include 
