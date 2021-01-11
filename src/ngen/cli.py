@@ -32,3 +32,12 @@ def copy(key, db):
     Copy selected secret
     """
     subprocess.run([cmd, 'clip', db, key])
+
+@main.command()
+@click.option('--term', '-t', default='', help='The term to be searched on the DB')
+@click.option('--db', '-d', default=db, help='DB to copy secrets from')
+def search(term, db):
+    """
+    Search 'term' on DB
+    """
+    subprocess.run([cmd, 'locate', db, term])

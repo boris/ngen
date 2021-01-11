@@ -5,7 +5,7 @@ with open('README.rst', encoding='UTF-8') as f:
 
 setup(
         name='ngen',
-        version='0.1.1',
+        version='0.2.0',
         description='CLI to talk to keepasscx-cli',
         long_description=readme,
         author='Boris Quiroz',
