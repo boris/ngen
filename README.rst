@@ -28,7 +28,7 @@ the following:
     $ ngen search --term Secret
     $ ngen search -t Secret
 
-Also, default DB, defined in `config.yaml` can be overwritten as follows:
+Also, default DB, defined in ``config.yaml`` can be overwritten as follows:
 
 ::
 
@@ -45,6 +45,12 @@ The above will do the following:
 2. List the secrets in the DB defined
 3. Copy the secret located in ``Some/Secret`` using the short format
 4. Same above, but using long format
+5. Search for a term
+
+Search feature:
+- Is not case sensitive. Searching for 'Secret' will return the same as searching
+  for 'secret'
+- Includes substrings. Searching for 'Secre' will include 
 
 
 Dev list
