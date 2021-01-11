@@ -22,9 +22,22 @@ the following:
 ::
 
     $ ngen --help
+    $ ngen list
+    $ ngen copy --key Some/Secret
+    $ ngen copy -k Some/Secret
+    $ ngen search --term Secret
+    $ ngen search -t Secret
+
+Also, default DB, defined in `config.yaml` can be overwritten as follows:
+
+::
+
     $ ngen list -d ~/keepass/example.kdbx
+    $ ngen list --db ~/keepass/example.kdbx
     $ ngen copy -d ~/keepass/example.kdbx -k Some/Secret
     $ ngen copy --db ~/keepass/example.kdbx --key Some/Secret
+    $ ngen search -d ~/keepass/example.kdbx Secret
+    $ ngen search --db ~/keepass/example.kdbx Secret
 
 The above will do the following:
 
