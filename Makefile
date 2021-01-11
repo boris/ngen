@@ -12,4 +12,4 @@ clean:
 	pip uninstall ngen
 
 build:
-	python setup.py bwheel_dist
+	python setup.py bdist_wheel
