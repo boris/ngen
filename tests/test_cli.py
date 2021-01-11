@@ -28,3 +28,17 @@ def test_check_keepassxc_exists(runner):
     process = subprocess.Popen(['keepassxc-cli', '-v'], stdout=subprocess.PIPE)
     out, _ = process.communicate()
     assert process.returncode == 0
+
+def test_search_existent_item(runner):
+    """
+    Will not fail if the item exists
+    """
+    result = runner.invoke(cli.main, ['search', '-d' , '~/.keepassxc/worth.kdbx', '-t', 'Test'])
+    assert result.exit_code == 0
+
+def test_search_unexistent_item(runner):
+    """
+    Will fail if the item does not exists
+    """
+    result = runner.invoke(cli.main, ['search', '-d' , '~/.keepassxc/worth.kdbx', '-t', 'Fake'])
+    assert result.output == ""
